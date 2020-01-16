@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/palburtus/basenodereactproject#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "serialize-javascript": "^2.1.2"
   }
 }
