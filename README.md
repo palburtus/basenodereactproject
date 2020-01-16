@@ -14,3 +14,4 @@ A basic template for creating an new React webpage with a Node.js background
 - cd client
 - npm install concurrently
 - npm install --save react-router
+- npm install --save react-router-dom
