@@ -1,5 +1,6 @@
 # React/Node Template 
 A basic template for creating an new React webpage with a Node.js background
+
 [![Apache 2.0 badge](http://img.shields.io/badge/license-apache_2.0-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![npm version badge](https://img.shields.io/badge/npm-v6.13.4-blue "npm version")
 ![react version badge](https://img.shields.io/badge/react-v16.12.0-blue "react version")
