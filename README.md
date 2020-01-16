@@ -2,7 +2,7 @@
 A basic template for creating an new React webpage with a Node.js background
 
 ## Dependencies Installed 
-- node
+https://shields.io/npm/v/:6.13.4
 - react (and all dependencies used by create-react-app)
 - express
 - concurrently
