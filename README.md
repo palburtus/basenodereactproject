@@ -9,10 +9,6 @@ A basic template for creating an new React webpage with a Node.js background
 ![bootstrap version badge](https://img.shields.io/badge/bootstrap-v4.4.1-blue "bootsrap version")
 
 
-## Dependencies Installed 
-
-- twitter bootstrap
-
 ## Commands and Setup already done 
 - npm init (changed entry point to server.js, acceptted defaults for the rest) 
 - touch server.js
