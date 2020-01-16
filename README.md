@@ -8,6 +8,7 @@ A basic template for creating an new React webpage with a Node.js background
 - concurrently
 - react-router
 - react-router-dom
+- twitter bootstrap
 
 ## Commands and Setup already done 
 - npm init (changed entry point to server.js, acceptted defaults for the rest) 
