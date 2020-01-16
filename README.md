@@ -1,7 +1,7 @@
 # React/Node Template 
 A basic template for creating an new React webpage with a Node.js background
 
-![alt text](https://img.shields.io/badge/npm-v6.13.4-blue "npm version")
+![npm version badge](https://img.shields.io/badge/npm-v6.13.4-blue "npm version")
 
 ## Dependencies Installed 
 - react (and all dependencies used by create-react-app)
