@@ -1,0 +1,28 @@
+.App {
+  
+}
+
+.employee-list-card{
+  margin-top: 25px;
+}
+
+.employee-list-button{
+  margin-left: 15px;
+}
+
+.red-text{
+  color: #ff0000;
+}
+
+.advertisement{
+  margin-top: 15px;
+  text-align: center;
+  background-color: #0000ff;
+  height: 70px;
+}
+
+
+.advertisement h5{
+  color: #ffffff;
+  padding-top: 20px;
+}
