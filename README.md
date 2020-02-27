@@ -9,7 +9,7 @@ A basic template for creating an new React webpage with a Node.js background
 ![express version badge](https://img.shields.io/badge/express-v4.17.1-blue "express version")
 ![concurrently version badge](https://img.shields.io/badge/concurrently-v5.0.2-blue "concurrently version")
 ![bootstrap version badge](https://img.shields.io/badge/bootstrap-v4.4.1-blue?logo=bootstrap "bootsrap version")
-
+![jquery version badge](https://img.shields.io/badge/jQuery-v3.4.1-blue?logo=jquery "jQuery version")
 
 ## Commands and Setup already done 
 - npm init (changed entry point to server.js, acceptted defaults for the rest) 
@@ -20,3 +20,5 @@ A basic template for creating an new React webpage with a Node.js background
 - npm install concurrently
 - npm install --save react-router
 - npm install --save react-router-dom
+- npm install jquery
+- npm install universal-cookies
