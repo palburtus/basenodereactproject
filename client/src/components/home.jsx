@@ -1,18 +1,22 @@
 import React from 'react';
 
-class Ad extends React.Component{
+class Home extends React.Component{
     
     constructor(props, context) {
         super(props, context);
+          
     }
 
+    
+
     render(){
+
         return(
-            <div className="advertisement">
-                <h5>Advertisement</h5>
+            <div>
+                <p>Hello World</p>
             </div>
-        )
+        );
     }
 }
 
-export default Ad;
+export default Home;

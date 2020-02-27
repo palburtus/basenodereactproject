@@ -4,9 +4,7 @@ import logo from './logo.svg';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 //import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
-import Employees from './components/employees'
-import AddEmployee from './components/add-employee'
-import EmployeeDetails from './components/employee-details';
+import Home from './components/home'
 
 function App() {
   
@@ -27,9 +25,7 @@ function App() {
         <Switch>
           <div className="App">
             <div className="container body-content">
-              <Route exact path="/" component={Employees} />
-              <Route path="/employees/add" component={AddEmployee}/>  
-              <Route path="/employees/details" component={EmployeeDetails}/>  
+              <Route exact path="/" component={Home} />
             </div>      
           </div>
         </Switch>
