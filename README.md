@@ -18,7 +18,7 @@ A basic template for creating an new React webpage with a Node.js backend
 - cd into client
 - npm install
 
-## Other Ino
+## Other Info
 
 ### Steps already taken that were used to create this project
 - npm init (changed entry point to server.js, acceptted defaults for the rest) 
