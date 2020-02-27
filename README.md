@@ -1,5 +1,5 @@
 # React/Node Template 
-A basic template for creating an new React webpage with a Node.js background
+A basic template for creating an new React webpage with a Node.js backend
 
 [![Apache 2.0 badge](http://img.shields.io/badge/license-apache_2.0-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![node version badge](https://img.shields.io/badge/node-v12.11.1-blue?logo=Node.js "node version")
@@ -11,7 +11,14 @@ A basic template for creating an new React webpage with a Node.js background
 ![bootstrap version badge](https://img.shields.io/badge/bootstrap-v4.4.1-blue?logo=bootstrap "bootsrap version")
 ![jquery version badge](https://img.shields.io/badge/jQuery-v3.4.1-blue?logo=jquery "jQuery version")
 
-## Commands and Setup already done 
+## Setup
+- clone the project
+- cd into basenodereactproject
+- npm install
+- cd into client
+- npm install
+
+### Steps already taken that were used to create this project
 - npm init (changed entry point to server.js, acceptted defaults for the rest) 
 - touch server.js
 - npx create-react-app client
