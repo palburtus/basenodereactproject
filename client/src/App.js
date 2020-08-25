@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import logo from './logo.svg';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Home from './components/home'
 
@@ -24,7 +23,7 @@ function App() {
     <Router>
         <Switch>
           <div className="App">
-            <div className="container body-content">
+            <div >
               <Route exact path="/" component={Home} />
             </div>      
           </div>
