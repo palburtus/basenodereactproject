@@ -1,5 +1,6 @@
 import React from 'react';
-import data from '../data.json';
+import dataTwenty from '../data_2020.json';
+import dataTwentyOne from '../data_2021.json';
 import $ from "jquery";
 import { Modal, Button } from 'react-bootstrap';
 
@@ -7,14 +8,16 @@ class Home extends React.Component{
     
     constructor(props, context) {
         super(props, context);
-        let dataObj = JSON.parse(data);
+       
+        let dataObj = JSON.parse(dataTwentyOne);
         this.state = {
             isEditingNotes: false,
             currentNotePlayer: '',
             currentNote: '',
             playerSearchValue: '',
             filterPosition: 'ALL',
-            dataObj: dataObj
+            dataObj: dataObj,
+            showOnlyAvailable: false
         }
         
         this.openNotes = this.openNotes.bind(this);
@@ -23,6 +26,7 @@ class Home extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handlePositionChange = this.handlePositionChange.bind(this);
         this.setDrafted = this.setDrafted.bind(this);
+        this.toggleShowOnlyAvailable = this.toggleShowOnlyAvailable.bind(this);
     }
 
     handleInputChange(event) {
@@ -39,6 +43,15 @@ class Home extends React.Component{
      handlePositionChange(e){
         var position = e.target.value;
         this.setState({ filterPosition: position });
+     }
+
+     toggleShowOnlyAvailable(){
+        
+        let toggledValue = !this.state.showOnlyAvailable;
+
+        this.setState({
+            showOnlyAvailable : toggledValue
+        });
      }
 
     openNotes(playerName, note){        
@@ -94,7 +107,7 @@ class Home extends React.Component{
         return(
             <div>
                 
-                <form>
+                <form className="search-form sticky-top">
                     <div className="form-row">
                         <div className="col-4">
                             <input type="text" className="form-control" name="playerSearchValue" onChange={this.handleInputChange} placeholder="Player Name" value={this.state.playerSearchValue}/>
@@ -108,6 +121,14 @@ class Home extends React.Component{
                                 <option value="TE">TE</option>
                             </select>
                         </div>
+                        <div class="col-auto my-1">
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" id="autoSizingCheck2" onChange={this.toggleShowOnlyAvailable} checked={this.state.showOnlyAvailable}/>
+                                <label className="form-check-label" for="autoSizingCheck2">
+                                Show Available Only?
+                                </label>
+                            </div>
+                        </div>                        
                     </div>
                 </form>
 
@@ -119,12 +140,11 @@ class Home extends React.Component{
                             <th scope="col">POS</th>
                             <th scope="col">Team</th>
                             <th scope="col">ADP</th>
-                            <th scope="col">'19 Cost</th>
-                            <th scope="col">'19 Drafted Team</th>
+                            <th scope="col">'20 Cost</th>
+                            <th scope="col">'20 Drafted Team</th>
                             <th scope="col">Air Yards</th>
-                            <th scope="col">WOPR</th>
-                            <th scope="col">Rush Attps</th>
-                            <th scope="col">YPC</th>
+                            <th scope="col">Rush Yards</th>
+                            <th scope="col">YP Carry</th>
                             <th scope="col">TDs</th>
                             <th scope="col">Note</th>
                             <th scope="col">Actions</th>
@@ -138,49 +158,73 @@ class Home extends React.Component{
                                     
                                     if(item.position === this.state.filterPosition || this.state.filterPosition === 'ALL'){
                                         
-                                    
+                                        
+                                        let costCell = item.cost;
+                                        let rowClassName = ''
+                                        
+                                        if(item.is_2020_keeper === "True"){
+                                            costCell = item.cost + ' (k)' 
+                                        }
+        
+                                        let buttonText = 'Draft';
+                                        let buttonClass = 'btn btn-info';
 
-                                    let costCell = item.cost;
-                                    let rowClassName = ''
-                                    
-                                    if(item.is_2019_keeper === "True"){
-                                        costCell = item.cost + ' (k)' 
-                                    }
-    
-                                    let buttonText = 'Draft';
-                                    let buttonClass = 'btn btn-info';
+                                        if(!item.is_available){
+                                            rowClassName = "keeper";
+                                            buttonClass = 'btn btn-light';
+                                            buttonText = "Undo";
+                                        }
 
-                                    if(!item.is_available){
-                                        rowClassName = "keeper";
-                                        buttonClass = 'btn btn-light';
-                                        buttonText = "Undo";
-                                    }
+                                        if(item.is_2020_keeper === "True"){
+                                            rowClassName = "keeper";
+                                            buttonClass = 'hidden';
+                                            buttonText = '';
+                                        }
+        
+                                        if(this.state.showOnlyAvailable){
+                                            if(item.is_available && item.is_2020_keeper === "False"){
+                                                return  <tr className={rowClassName}>
+                                                    <td  className="table-col-sm" scope="row">{(i + 1)}</td>
+                                                    <td>{item.player_name}</td>
+                                                    <td>{item.position}</td>
+                                                    <td>{item.nfl_team}</td>
+                                                    <td>{item.adp}</td>
+                                                    <td>{costCell}</td>
+                                                    <td>{item.drafted_by}</td>
+                                                    <td>{item.air_yards}</td>
+                                                    <td>{item.rush_attempts}</td>
+                                                    <td>{item.yards_per_carry}</td>
+                                                    <td>{item.TDs}</td>
+                                                    <td>{item.note}</td>
+                                                    <td>
+                                                        <button type="button" onClick={() => this.setDrafted(item.player_name)} className={buttonClass}>{buttonText}</button>
+                                                    </td>
+                                                </tr>    
+                                            }
 
-                                    if(item.is_2020_keeper === "True"){
-                                        rowClassName = "keeper";
-                                        buttonClass = 'hidden';
-                                        buttonText = '';
-                                    }
-    
-                                    return  <tr className={rowClassName}>
-                                                <td  className="table-col-sm" scope="row">{(i + 1)}</td>
-                                                <td>{item.player_name}</td>
-                                                <td>{item.position}</td>
-                                                <td>{item.nfl_team}</td>
-                                                <td>{item.adp}</td>
-                                                <td>{costCell}</td>
-                                                <td>{item.drafted_by}</td>
-                                                <td>{item.air_yards}</td>
-                                                <td>{item.wopr}</td>
-                                                <td>{item.rush_attempts}</td>
-                                                <td>{item.yards_per_carry}</td>
-                                                <td>{item.TDs}</td>
-                                                <td>{item.note}</td>
-                                                <td>
-                                                    <button type="button" onClick={() => this.setDrafted(item.player_name)} className={buttonClass}>{buttonText}</button>
-                                                </td>
-                                            </tr>
-                                
+                                        }else {
+                                            return  <tr className={rowClassName}>
+                                            <td  className="table-col-sm" scope="row">{(i + 1)}</td>
+                                            <td>{item.player_name}</td>
+                                            <td>{item.position}</td>
+                                            <td>{item.nfl_team}</td>
+                                            <td>{item.adp}</td>
+                                            <td>{costCell}</td>
+                                            <td>{item.drafted_by}</td>
+                                            <td>{item.air_yards}</td>
+                                            <td>{item.rush_attempts}</td>
+                                            <td>{item.yards_per_carry}</td>
+                                            <td>{item.TDs}</td>
+                                            <td>{item.note}</td>
+                                            <td>
+                                                <button type="button" onClick={() => this.setDrafted(item.player_name)} className={buttonClass}>{buttonText}</button>
+                                            </td>
+                                        </tr>
+                                        }
+
+                                        
+                                        
+                                        
                                     }
                                 }
                             })
